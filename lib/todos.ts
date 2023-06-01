@@ -17,3 +17,15 @@ export async function createTodo(title: string) {
     return { error }
   }
 }
+
+export async function updateTodo(id: string, isCompleted: boolean) {
+  try {
+    const todo = await prisma.todo.update({
+      where: { id },
+      data: { isCompleted }
+    })
+    return { todo }
+  } catch (error) {
+    return { error }
+  }
+}
